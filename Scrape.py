@@ -36,7 +36,7 @@ class my_server(BaseHTTPRequestHandler):
         self.wfile.write(bytes(csv_data,encoding="utf-8"))
 
 def server():
-    hostname="localhost"
+    hostname="0.0.0.0"
     server_port=32766
     webserver = HTTPServer((hostname, server_port), my_server)
     try:
