@@ -15,4 +15,10 @@ y = df['capacity']
 plt.plot(x, y)
 # beautify the x-labels
 plt.gcf().autofmt_xdate()
+ax = plt.gca()
+
+labels=ax.get_xaxis().get_ticklabels()
+for label in range(len(labels)):
+    if label % 10 != 0:
+        labels[label].set_visible(False)
 plt.show()
