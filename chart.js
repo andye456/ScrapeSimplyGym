@@ -24,7 +24,7 @@ show_graph = function (day) {
     today = getDateTime(day);
 //Read the data
     d3.select('#today_date').text(today);
-    d3.csv("http://35.176.56.125:32766",
+    d3.csv("http://35.176.56.125:32766/data",
         function (d) {
             console.log(d)
             // format date fields

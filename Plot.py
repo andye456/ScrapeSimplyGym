@@ -5,7 +5,7 @@ from datetime import datetime
 # The graph will take 2 values the time and the current capacity
 def plot_graph(csv_file):
     headers = ['time','capacity']
-    df = pd.read_csv(csv_file, names=headers)
+    df = pd.read_csv(csv_file, names=headers, skiprows=1)
     print(df)
     x = df['time']
     y = df['capacity']
