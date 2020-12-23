@@ -2,6 +2,7 @@
 
 
 update_graph = function (day_adjust) {
+    console.log("Update graph")
     d3.select('#svg').remove();
     show_graph(day_adjust);
 }
@@ -24,9 +25,14 @@ show_graph = function (day) {
     today = getDateTime(day);
 //Read the data
     d3.select('#today_date').text(today);
-    d3.csv("http://35.176.56.125:32766/data",
+    if(day == 0) {
+        var data_file = "data.csv";
+    } else {
+        var data_file = "data.csv."+today;
+    }
+    d3.csv(data_file,
         function (d) {
-            console.log(d)
+            // console.log(d)
             // format date fields
             return {time: d3.timeParse("%H:%M:%S")(d.time), capacity: d.capacity}
         },
@@ -44,7 +50,7 @@ show_graph = function (day) {
                 return {
                     name: grpName,
                     values: data.map(function (d) {
-                        return {time: d.time, value: d.capacity};
+                        return {time: d.time, value: d[grpName]};
                     })
                 };
             });
@@ -153,7 +159,7 @@ show_graph = function (day) {
                 .attr("cy", function (d) {
                     return y(d.value)
                 })
-                .attr("r", 3)
+                .attr("r", 2)
                 .attr("stroke", "white")
                 .on("mouseover", mouseover)
                 .on("mousemove", mousemove)

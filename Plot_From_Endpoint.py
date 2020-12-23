@@ -3,7 +3,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import io
 
-resp = requests.get("http://35.176.56.125:32766/data").content
+resp = requests.get("http://35.176.56.125:32766/data.csv").content
 
 headers = ['time', 'capacity']
 # Creates the dataframe from the csv data, skips the header text values.

@@ -49,13 +49,10 @@ class my_server(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
-        with open(self.path.strip("/"), 'r') as file:
-            if file == 'data':
-                csv_data = Path("data.csv").read_text()
-                self.wfile.write(bytes(csv_data, encoding="utf-8"))
-            elif file == 'plot':
-                graph_page = Path("SimpleGymCapacity.html")
-                self.wfile.write(bytes(graph_page, encoding="utf-8"))
+        file = self.path.strip("/")
+        page = Path(file).read_text()
+        self.wfile.write(bytes(page, encoding="utf-8"))
+
 
 
 
