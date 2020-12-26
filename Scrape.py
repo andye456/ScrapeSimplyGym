@@ -45,13 +45,16 @@ def scrape():
 # This is a web server so that the csv data can be provided on an endpoint for remote apps to use
 class my_server(BaseHTTPRequestHandler):
     def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.end_headers()
-        file = self.path.strip("/")
-        page = Path(file).read_text()
-        self.wfile.write(bytes(page, encoding="utf-8"))
+        try:
+            self.send_response(200)
+            self.send_header("Content-type", "text/html")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            file = self.path.strip("/")
+            page = Path(file).read_text()
+            self.wfile.write(bytes(page, encoding="utf-8"))
+        except:
+            pass
 
 
 

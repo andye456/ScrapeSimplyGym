@@ -13,6 +13,7 @@ show_graph = function (day) {
         height = 300 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
+// append the svg object to the body of the page
     var svg = d3.select("#graph1")
         .append("svg")
         // .attr("width", width + margin.left + margin.right)
@@ -75,6 +76,8 @@ show_graph = function (day) {
                 .call(xAxis.ticks(d3.timeHour))
                 .selectAll("text")
                 .attr("transform", "rotate(90)")
+                .attr("x","10")
+                .attr("y","-5")
                 .style("text-anchor", "start")
             ;
 
@@ -214,6 +217,6 @@ function getDateTime(d) {
     day = (day < 10 ? "0" : "") + day;
 
     // return year + "-" + month + "-" + day + "T" + hour + ":" + imn + ":" + sec;
-    return day + "-" + month + "-" + year;
+    return year + "-" + month + "-" + day;
 
 }
